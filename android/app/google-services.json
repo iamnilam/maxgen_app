@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "947614676208",
+    "project_id": "maxgenapp-55cf6",
+    "storage_bucket": "maxgenapp-55cf6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947614676208:android:e35d82b70721c4308c3e35",
+        "android_client_info": {
+          "package_name": "com.example.maxgen_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLRlZ8wg6AU65eZ3qFvPwXrtBf-gNLsRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
