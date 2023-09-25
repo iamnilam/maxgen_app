@@ -13,7 +13,7 @@ class BaseScreen extends StatefulWidget {
 
 class _BaseScreenState extends State<BaseScreen> {
   int _currentIndex = 0;
-  final List screens = [HomeScreen(), SearchScreen(), PhoneScreen()];
+  final List screens = [HomeScreen(), SearchScreen(), PhoneScreen(verificationId: '',)];
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;

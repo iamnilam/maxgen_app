@@ -1,6 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:maxgen_app/model/user_model.dart';
+import 'package:maxgen_app/provider/auth_provider.dart';
+import 'package:maxgen_app/ui/congratulations_screen.dart';
 import 'package:maxgen_app/ui/profile_select_category_screen.dart';
 import 'package:maxgen_app/utils/app_color.dart';
+import 'package:maxgen_app/utils/showsnackbar.dart';
+import 'package:provider/provider.dart';
 
 class ProfileNameScreen extends StatefulWidget {
   const ProfileNameScreen({super.key});
@@ -12,6 +19,19 @@ class ProfileNameScreen extends StatefulWidget {
 class _ProfileNameScreenState extends State<ProfileNameScreen> {
   final formKey = GlobalKey<FormState>();
   TextEditingController nameCtr = TextEditingController();
+  //final nameController = TextEditingController();
+  File? image;
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final bioController = TextEditingController();
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    nameController.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +61,7 @@ class _ProfileNameScreenState extends State<ProfileNameScreen> {
                       height: 5,
                     ),
                     TextFormField(
-                      controller: nameCtr,
+                      controller: nameController,
                       decoration: InputDecoration(
                           filled: true,
                           fillColor: Color.fromARGB(255, 210, 208, 208)
@@ -131,16 +151,7 @@ class _ProfileNameScreenState extends State<ProfileNameScreen> {
                 height: 45,
                 width: MediaQuery.of(context).size.width,
                 child: MaterialButton(
-                  onPressed: () {
-                    if (formKey.currentState!.validate() ?? false) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProfileSelectCategoryScreen(),
-                        ),
-                      );
-                    }
-                  },
+                  onPressed: () => storeData(),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
                   ),
@@ -159,5 +170,12 @@ class _ProfileNameScreenState extends State<ProfileNameScreen> {
         ),
       ),
     );
+  }
+  void storeData() async {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
+    UserModel userModel = UserModel(
+      name: nameController.text.trim(), uid: '',
+    );
+
   }
 }
